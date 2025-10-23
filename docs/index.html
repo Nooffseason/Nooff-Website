@@ -3,149 +3,612 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Website</title>
+    <title>Kristina Juse - Projekt- & Unternehmensentwicklung</title>
+    <meta name="description" content="Erfahrene Projekt- und Unternehmensentwicklerin mit unternehmerischem Hintergrund und Expertise in Marketing, Vertrieb und Operations.">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --primary: #0f766e;
+            --primary-dark: #115e59;
+            --primary-light: #14b8a6;
+            --accent: #f59e0b;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #ffffff;
+            --bg-secondary: #f9fafb;
+            --border: #e5e7eb;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text);
+            background: var(--bg);
         }
-        
+
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-        
+
         nav {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
         }
-        
+
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
         }
-        
-        nav ul {
-            list-style: none;
+
+        .nav-links {
             display: flex;
             gap: 2rem;
+            list-style: none;
         }
-        
-        nav a {
-            color: white;
+
+        .nav-links a {
+            color: var(--text);
             text-decoration: none;
-            transition: opacity 0.3s;
+            font-weight: 500;
+            transition: color 0.3s;
         }
-        
-        nav a:hover {
-            opacity: 0.8;
+
+        .nav-links a:hover {
+            color: var(--primary);
         }
-        
-        .hero {
-            margin-top: 70px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: white;
-            color: #667eea;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 2rem;
         }
-        
-        .section {
-            margin-bottom: 4rem;
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .section h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            color: #667eea;
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            opacity: 0.3;
         }
-        
-        .cards {
+
+        .hero-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
             margin-top: 2rem;
         }
-        
-        .card {
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
             background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            color: var(--primary);
         }
-        
-        .card:hover {
-            transform: translateY(-5px);
+
+        .btn-primary:hover {
+            background: var(--bg-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
-        
-        .card h3 {
-            color: #667eea;
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .expertise-card {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .expertise-card:hover {
+            border-color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .expertise-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .expertise-card ul {
+            list-style: none;
+            color: var(--text-light);
+        }
+
+        .expertise-card li {
+            padding: 0.25rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .expertise-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid var(--bg);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .timeline-period {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-role {
+            color: var(--text-light);
+            font-weight: 600;
             margin-bottom: 1rem;
         }
-        
-        footer {
-            background: #333;
+
+        .timeline-description {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .timeline-achievements {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .timeline-achievements li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .timeline-achievements li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .skills-section {
+            background: var(--bg-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .languages {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .language-level {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+            border-color: var(--primary);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+        }
+
+        .blog-content {
+            padding: 1.75rem;
+        }
+
+        .blog-date {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .blog-card h3 {
+            margin-bottom: 0.75rem;
+            color: var(--text);
+            font-size: 1.25rem;
+        }
+
+        .blog-card p {
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more:hover {
+            color: var(--primary-dark);
+        }
+
+        .contact-section {
+            background: var(--bg-secondary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-details h3 {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details p {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .contact-details a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            color: var(--primary);
+        }
+
+        .contact-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 3rem;
+            border-radius: 1rem;
             color: white;
             text-align: center;
-            padding: 2rem;
         }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
+
+        .contact-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.25rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
                 font-size: 2rem;
             }
-            
-            nav ul {
-                gap: 1rem;
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
             }
         }
     </style>
@@ -153,93 +616,272 @@
 <body>
     <header>
         <nav>
-            <div class="logo">MeineLogo</div>
-            <ul>
-                <li><a href="#home">Start</a></li>
-                <li><a href="#services">Leistungen</a></li>
-                <li><a href="#about">Über uns</a></li>
-                <section class="section" id="blog">
-  <h2>Blog</h2>
-  <div class="cards">
-    <div class="card">
-      <h3><a href="blog/2025-10-21-erster-post.html">Mein erster Blogpost</a></h3>
-      <p>Ein kurzer Einblick in unser Eltern-Mindset.</p>
-    </div>
-    <div class="card">
-      <h3><a href="blog/2025-10-28-zweiter-post.html">Was uns antreibt</a></h3>
-      <p>Warum wir „no off season“ leben.</p>
-    </div>
-  </div>
-</section>
+            <a href="#" class="logo">Kristina Juse</a>
+            <ul class="nav-links">
+                <li><a href="#about">Über mich</a></li>
+                <li><a href="#experience">Erfahrung</a></li>
+                <li><a href="#skills">Kompetenzen</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero" id="home">
-        <h1>Willkommen bei no off season </h1>
-        <p> parents performance gear</p>
-        <a href="#services" class="btn">Mehr erfahren</a>
-    </section>
-
-    <div class="container">
-        <section class="section" id="services">
-            <h2>Unsere Erfahrungen</h2>
-            <div class="cards">
-                <div class="card">
-                    <h3>Performance Gear</h3>
-                    <p>Was wir als Eltern an Ausrüstung brauchen.</p>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Kristina Juse</h1>
+                    <p class="hero-subtitle">Projekt- & Unternehmensentwicklung</p>
+                    <p class="hero-description">
+                        Ich arbeite mit einem klaren Blick für Zusammenhänge, Prioritäten und Menschen.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary">Kontakt aufnehmen</a>
+                        <a href="#experience" class="btn btn-secondary">Mehr erfahren</a>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>Unser Mindset</h3>
-                    <p>Eltern sein ist die längste und wahrscheinlich härteste Challenge unseres Lebens.</p>
-                </div>
-                <div class="card">
-                    <h3>Unsere Erfahrungswerte</h3>
-                    <p>Was uns geholfen hat und immer noch hilft.</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Jahre Erfahrung</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Branchen</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Sprachen</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Lösungen entwickelt</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="section" id="about">
-            <h2>Über uns</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
-                Wir sind Eltern, 
-                die nicht nur überleben wollen. 
-                Wir scheitern jeden einzelnen fucking Tag.
-            </p>
-        </section>
-
-        <section class="section" id="contact">
-            <h2>Kontakt</h2>
-            <div style="text-align: center;">
-                <p>Ihr auch?</p>
-                <p style="margin-top: 1rem;">
-                    <strong>Email:</strong> info@beispiel.de<br>
-                    <strong>Telefon:</strong> +49 123 456789
-                </p>
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">Über mich</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            Als erfahrene Projekt- und Unternehmensentwicklerin mit unternehmerischem Hintergrund 
+                            bringe ich umfassende Expertise im Auf- und Ausbau wirkungsvoller Strukturen mit.
+                        </p>
+                        <p>
+                            Durch Managementfunktionen in Marketing, Vertrieb und Operations habe ich tiefgreifende 
+                            Erfahrungen in verschiedenen Branchen gesammelt – vom Public Sector über Retail bis hin 
+                            zu Manufacturing und additiver Fertigung.
+                        </p>
+                        <p>
+                            Mein Ansatz verbindet analytisches Denken mit lösungsorientiertem Handeln. Ich entwickle 
+                            Strategien, die funktionieren, und setze sie mit strukturierter Teamführung um.
+                        </p>
+                    </div>
+                    <div class="expertise-grid">
+                        <div class="expertise-card">
+                            <h3>Kernkompetenzen</h3>
+                            <ul>
+                                <li>Prozessaufbau & Organisationsentwicklung</li>
+                                <li>Digitale Produkte & agile Projektsteuerung</li>
+                                <li>Vertriebsstrategie & Marktentwicklung</li>
+                                <li>KPI-Entwicklung & Entscheidungsgrundlagen</li>
+                                <li>Kooperative Teamführung</li>
+                            </ul>
+                        </div>
+                        <div class="expertise-card">
+                            <h3>Stärken</h3>
+                            <ul>
+                                <li>Analytische Fähigkeiten</li>
+                                <li>Lösungsorientiert</li>
+                                <li>Teamfähig & verhandlungsstark</li>
+                                <li>Strukturiert & zielorientiert</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-    </div>
+
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 class="section-title">Beruflicher Werdegang</h2>
+                <div class="experience-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-period">2020 - 2025</div>
+                        <div class="timeline-company">Digitalagentur</div>
+                        <div class="timeline-role">Umsatzverantwortung, Business Development & Prozessmanagement</div>
+                        <div class="timeline-description">
+                            Spezialisiert auf öffentliche und mehrstufige Stakeholder-Projekte
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Projektleitung im Rahmen des Onlinezugangsgesetzes für den Freistaat Hessen</li>
+                            <li>Product Owner für digitale Transformationsprojekte</li>
+                            <li>Aufbau von Prozessen und Organisationsstrukturen</li>
+                            <li>Entwicklung agiler Projektsteuerungsmethoden</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-period">2017 - 2020</div>
+                        <div class="timeline-company">Industrie Start-up (Additive Fertigung)</div>
+                        <div class="timeline-role">Vertrieb & Marketing, Leadership</div>
+                        <ul class="timeline-achievements">
+                            <li>Etablierung eines Multi-Stakeholder-Vertriebsansatzes</li>
+                            <li>Aufbau eines daten- und faktenbasierten Entscheidungsprozesses</li>
+                            <li>Mitwirkung bei der Entwicklung einer klaren Zukunftsvision</li>
+                            <li>Erfolgreicher Exit: Verkauf der Firma</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-period">2014 - 2017</div>
+                        <div class="timeline-company">SaaS Start-up (Retail)</div>
+                        <div class="timeline-role">Umsatzverantwortung EMEA-Region, Business Development</div>
+                        <ul class="timeline-achievements">
+                            <li>Evaluierung des südamerikanischen Marktes mit Sitz in São Paulo</li>
+                            <li>Erkennung und Nutzung von Marktentwicklungen</li>
+                            <li>Aufbau und Führung eines internationalen Teams (8 Mitarbeiter über 3 Büros)</li>
+                            <li>Entwicklung regionaler Vertriebsstrategien</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <h2 class="section-title">Kompetenzen & Tools</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Branchen</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Public Sector</span>
+                            <span class="skill-tag">Retail</span>
+                            <span class="skill-tag">Manufacturing</span>
+                            <span class="skill-tag">3D Printing</span>
+                            <span class="skill-tag">SaaS</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools & Software</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Jira</span>
+                            <span class="skill-tag">Github</span>
+                            <span class="skill-tag">Google Suite</span>
+                            <span class="skill-tag">Microsoft Suite</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Toggle</span>
+                            <span class="skill-tag">Slack</span>
+                            <span class="skill-tag">Civento</span>
+                            <span class="skill-tag">Datev</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem; font-size: 1.1rem;">Sprachen</h3>
+                    <div class="languages">
+                        <div class="language-item">
+                            <div class="language-name">Deutsch</div>
+                            <div class="language-level">Muttersprache</div>
+                        </div>
+                        <div class="language-item">
+                            <div class="language-name">Spanisch</div>
+                            <div class="language-level">Fließend (C2)</div>
+                        </div>
+                        <div class="language-item">
+                            <div class="language-name">Englisch</div>
+                            <div class="language-level">Fließend (C2)</div>
+                        </div>
+                        <div class="language-item">
+                            <div class="language-name">Portugiesisch</div>
+                            <div class="language-level">Fortgeschritten (B2)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section">
+            <div class="container">
+                <h2 class="section-title">Blog & Einblicke</h2>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <div class="blog-image">💡</div>
+                        <div class="blog-content">
+                            <div class="blog-date">Kommende Beiträge</div>
+                            <h3>Prozessmanagement in digitalen Transformationsprojekten</h3>
+                            <p>Wie man strukturierte Prozesse aufbaut, die Teams stärken und Projekterfolge ermöglichen.</p>
+                            <a href="#" class="read-more">Weiterlesen →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-image">🎯</div>
+                        <div class="blog-content">
+                            <div class="blog-date">Demnächst verfügbar</div>
+                            <h3>Von der Vision zum Exit</h3>
+                            <p>Erfahrungen aus dem erfolgreichen Aufbau und Verkauf eines Industrie Start-ups.</p>
+                            <a href="#" class="read-more">Weiterlesen →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-image">🌍</div>
+                        <div class="blog-content">
+                            <div class="blog-date">In Vorbereitung</div>
+                            <h3>Internationale Teams erfolgreich führen</h3>
+                            <p>Lessons Learned aus der Führung von Teams über drei Kontinente hinweg.</p>
+                            <a href="#" class="read-more">Weiterlesen →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h2 class="section-title">Kontakt</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h3>E-Mail</h3>
+                                <p><a href="mailto:kristina@juse.at">kristina@juse.at</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-details">
+                                <h3>Telefon</h3>
+                                <p><a href="tel:+4915170088369">+49 151 70088369</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h3>Standort</h3>
+                                <p>Schardenberg, Oberösterreich</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-cta">
+                        <h3>Lassen Sie uns sprechen</h3>
+                        <p>Interessiert an einer Zusammenarbeit oder haben Sie Fragen? Ich freue mich auf den Austausch.</p>
+                        <a href="mailto:kristina@juse.at" class="btn btn-primary">Nachricht senden</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Unsere Website. Alle Rechte vorbehalten.</p>
+        <p>&copy; 2025 Kristina Juse. Projekt- & Unternehmensentwicklung.</p>
     </footer>
 
     <script>
-        // Smooth Scrolling für Navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor =>
