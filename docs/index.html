@@ -47,6 +47,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
@@ -54,6 +55,7 @@
             font-weight: 700;
             color: var(--primary);
             text-decoration: none;
+            z-index: 101;
         }
 
         .nav-links {
@@ -71,6 +73,37 @@
 
         .nav-links a:hover {
             color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 101;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            margin: 5px 0;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         .container {
@@ -557,6 +590,35 @@
         }
 
         @media (max-width: 968px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--bg);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 1.5rem;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+                transition: right 0.3s ease;
+                z-index: 100;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 0.5rem 0;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -574,11 +636,6 @@
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
             }
 
             .blog-grid {
@@ -617,9 +674,15 @@
     <header>
         <nav>
             <a href="#" class="logo">Kristina Juse</a>
+            <button class="menu-toggle" aria-label="Menü">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="#about">Über mich</a></li>
                 <li><a href="#experience">Erfahrung</a></li>
+                <li><a href="#education">Ausbildung</a></li>
                 <li><a href="#skills">Kompetenzen</a></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Kontakt</a></li>
@@ -711,23 +774,22 @@
                 <h2 class="section-title">Beruflicher Werdegang</h2>
                 <div class="experience-timeline">
                     <div class="timeline-item">
-                        <div class="timeline-period">2019 - 2025</div>
+                        <div class="timeline-period">2020 - 2025</div>
                         <div class="timeline-company">Digitalagentur</div>
-                        <div class="timeline-role">Mitgründerin (20%), Business Development & Prozessmanagement</div>
+                        <div class="timeline-role">Umsatzverantwortung, Business Development & Prozessmanagement</div>
                         <div class="timeline-description">
                             Spezialisiert auf öffentliche und mehrstufige Stakeholder-Projekte
                         </div>
                         <ul class="timeline-achievements">
                             <li>Projektleitung im Rahmen des Onlinezugangsgesetzes für den Freistaat Hessen</li>
-                            <li>Product Owner für digitale eigene Produkte</li>
+                            <li>Product Owner für digitale Transformationsprojekte</li>
                             <li>Aufbau von Prozessen und Organisationsstrukturen</li>
                             <li>Entwicklung agiler Projektsteuerungsmethoden</li>
-                            <li>Elternzeit von Juni 2023 bis Januar 2025</li>
                         </ul>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-period">2018 - 2019</div>
+                        <div class="timeline-period">2017 - 2020</div>
                         <div class="timeline-company">Industrie Start-up (Additive Fertigung)</div>
                         <div class="timeline-role">Vertrieb & Marketing, Leadership</div>
                         <ul class="timeline-achievements">
@@ -739,20 +801,21 @@
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-period">2011 - 2017</div>
+                        <div class="timeline-period">2014 - 2017</div>
                         <div class="timeline-company">SaaS Start-up (Retail)</div>
                         <div class="timeline-role">Umsatzverantwortung EMEA-Region, Business Development</div>
                         <ul class="timeline-achievements">
                             <li>Evaluierung des südamerikanischen Marktes mit Sitz in São Paulo</li>
-                            <li>Anbahnen und Abschlüsse von zahlreichen Key Accounts</li>
-                            <li>Aufbau und Führung eines internationalen Teams mit Büros in London, Berlin und Passau</li>
+                            <li>Erkennung und Nutzung von Marktentwicklungen</li>
+                            <li>Aufbau und Führung eines internationalen Teams (8 Mitarbeiter über 3 Büros)</li>
                             <li>Entwicklung regionaler Vertriebsstrategien</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
-          <section id="education" class="section">
+
+        <section id="education" class="section">
             <div class="container">
                 <h2 class="section-title">Ausbildung</h2>
                 <div class="experience-timeline">
@@ -760,11 +823,11 @@
                         <div class="timeline-period">Universität Passau</div>
                         <div class="timeline-company">Diplom Kulturwirtin</div>
                         <div class="timeline-description">
-                            Schwerpunkte: BWL & VWL, Internationale und Interkulturelle Studien, 1.6
+                            Schwerpunkte: Kulturmanagement, Betriebswirtschaft und Internationales
                         </div>
                         <ul class="timeline-achievements">
                             <li>Auslandsjahr in Barcelona und Zaragoza, Spanien</li>
-                           
+                            <li>Interdisziplinäres Studium an der Schnittstelle von Kultur und Wirtschaft</li>
                         </ul>
                     </div>
                 </div>
@@ -901,7 +964,8 @@
     <footer>
         <p>&copy; 2025 Kristina Juse. Projekt- & Unternehmensentwicklung.</p>
     </footer>
-  <div id="quirky-widget" class="quirky-widget">
+
+    <div id="quirky-widget" class="quirky-widget">
         <div class="widget-content">
             <span class="widget-emoji">🎲</span>
             <span class="widget-text">Klick mich!</span>
@@ -985,6 +1049,32 @@
     </style>
 
     <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        // Quirky Widget
         const widget = document.getElementById('quirky-widget');
         const widgetEmoji = widget.querySelector('.widget-emoji');
         const widgetText = widget.querySelector('.widget-text');
