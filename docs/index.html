@@ -901,6 +901,161 @@
     <footer>
         <p>&copy; 2025 Kristina Juse. Projekt- & Unternehmensentwicklung.</p>
     </footer>
+  <div id="quirky-widget" class="quirky-widget">
+        <div class="widget-content">
+            <span class="widget-emoji">🎲</span>
+            <span class="widget-text">Klick mich!</span>
+        </div>
+    </div>
+
+    <style>
+        .quirky-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+            transition: all 0.3s;
+            z-index: 1000;
+            user-select: none;
+            animation: wiggle 3s ease-in-out infinite;
+        }
+
+        .quirky-widget:hover {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 6px 30px rgba(245, 158, 11, 0.6);
+        }
+
+        .widget-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .widget-emoji {
+            font-size: 1.5rem;
+            animation: spin 2s linear infinite;
+            display: inline-block;
+        }
+
+        .widget-text {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-3deg); }
+            75% { transform: rotate(3deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .widget-celebrating {
+            animation: bounce 0.5s ease-in-out 3;
+        }
+
+        @media (max-width: 640px) {
+            .quirky-widget {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.75rem 1.25rem;
+            }
+
+            .widget-emoji {
+                font-size: 1.25rem;
+            }
+
+            .widget-text {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 
     <script>
+        const widget = document.getElementById('quirky-widget');
+        const widgetEmoji = widget.querySelector('.widget-emoji');
+        const widgetText = widget.querySelector('.widget-text');
+        
+        const funFacts = [
+            { emoji: '🎯', text: 'Fun Fact: Ich spreche 4 Sprachen!' },
+            { emoji: '✈️', text: 'Ich habe in 3 Ländern gelebt' },
+            { emoji: '🚀', text: 'Zwei erfolgreiche Start-up Exits!' },
+            { emoji: '🎨', text: 'Kulturwirtin meets Tech' },
+            { emoji: '📊', text: 'Data-driven? Immer!' },
+            { emoji: '🌍', text: 'Von Passau über Barcelona nach São Paulo' },
+            { emoji: '💡', text: 'Ideen + Struktur = Magie' },
+            { emoji: '🎪', text: 'Prozesse sind wie Choreographien' },
+            { emoji: '🦄', text: 'Ich glaube an machbare Visionen' },
+            { emoji: '🎭', text: 'Multi-Stakeholder-Projekte? Her damit!' },
+            { emoji: '🔮', text: 'Die Zukunft ist agil' },
+            { emoji: '🎪', text: 'Von Public Sector bis 3D Printing' },
+            { emoji: '🧩', text: 'Komplexität ist mein Spielplatz' },
+            { emoji: '☕', text: 'Powered by Kaffee und Klarheit' },
+            { emoji: '🎸', text: 'Work hard, stay quirky' }
+        ];
+        
+        let lastFactIndex = -1;
+        let clickCount = 0;
+        
+        widget.addEventListener('click', () => {
+            clickCount++;
+            
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * funFacts.length);
+            } while (randomIndex === lastFactIndex && funFacts.length > 1);
+            
+            lastFactIndex = randomIndex;
+            const fact = funFacts[randomIndex];
+            
+            widget.classList.add('widget-celebrating');
+            
+            widgetEmoji.textContent = fact.emoji;
+            widgetText.textContent = fact.text;
+            
+            if (clickCount === 5) {
+                widgetEmoji.textContent = '🎉';
+                widgetText.textContent = 'Du bist hartnäckig - ich mag das!';
+            }
+            
+            if (clickCount === 10) {
+                widgetEmoji.textContent = '🏆';
+                widgetText.textContent = 'Achievement unlocked: Neugier-Champion!';
+            }
+            
+            if (clickCount === 15) {
+                widgetEmoji.textContent = '🤝';
+                widgetText.textContent = 'Lass uns reden! kristina@juse.at';
+            }
+            
+            setTimeout(() => {
+                widget.classList.remove('widget-celebrating');
+            }, 1500);
+            
+            const colors = [
+                ['#f59e0b', '#d97706'],
+                ['#0f766e', '#115e59'],
+                ['#dc2626', '#b91c1c'],
+                ['#7c3aed', '#6d28d9'],
+                ['#059669', '#047857'],
+                ['#ea580c', '#c2410c']
+            ];
+            
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            widget.style.background = `linear-gradient(135deg, ${randomColor[0]} 0%, ${randomColor[1]} 100%)`;
+        });
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor =>
