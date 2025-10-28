@@ -137,9 +137,35 @@
             margin: 0 auto;
             padding: 0 2rem;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 4rem;
             align-items: center;
+        }
+
+        .hero-image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
         }
 
         .hero-text h1 {
@@ -250,9 +276,26 @@
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 300px 1fr;
             gap: 4rem;
             align-items: start;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: 1rem;
+            object-fit: cover;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border: 2px dashed var(--border);
         }
 
         .about-text {
@@ -682,6 +725,11 @@
                 gap: 3rem;
             }
 
+            .hero-image {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
             .hero-text h1 {
                 font-size: 2.25rem;
             }
@@ -761,13 +809,12 @@
             </ul>
         </nav>
     </header>
- <main>
+
+    <main>
         <section class="hero">
             <div class="hero-content">
                 <div class="hero-image-container">
-                    <div class="hero-image">
-                        <img src="alt="Kristina Juse" class="hero-image">" alt="Kristina Juse" class="hero-image">
-                    </div>
+                    <img src="kristina-portrait.jpg" alt="Kristina Juse" class="hero-image">
                 </div>
                 <div class="hero-text">
                     <h1>Kristina Juse</h1>
@@ -787,40 +834,47 @@
             <div class="container">
                 <h2 class="section-title">Über mich</h2>
                 <div class="about-grid">
-                    <div class="about-text">
-                        <p>
-                            Als erfahrene Projekt- und Unternehmensentwicklerin mit unternehmerischem Hintergrund 
-                            bringe ich umfassende Expertise im Auf- und Ausbau wirkungsvoller Strukturen mit.
-                        </p>
-                        <p>
-                            Durch Managementfunktionen in Marketing, Vertrieb und Operations habe ich tiefgreifende 
-                            Erfahrungen in verschiedenen Branchen gesammelt – vom Public Sector über Retail bis hin 
-                            zu Manufacturing und additiver Fertigung.
-                        </p>
-                        <p>
-                            Mein Ansatz verbindet analytisches Denken mit lösungsorientiertem Handeln. Ich entwickle 
-                            Strategien, die funktionieren, und setze sie mit strukturierter Teamführung um.
-                        </p>
+                    <div class="about-image">
+                        Optional: Zweites Foto hier<br><br>
+                        Ersetze mit:<br>
+                        &lt;img src="about-foto.jpg" alt="Kristina Juse" class="about-image"&gt;
                     </div>
-                    <div class="expertise-grid">
-                        <div class="expertise-card">
-                            <h3>Kernkompetenzen</h3>
-                            <ul>
-                                <li>Prozessaufbau & Organisationsentwicklung</li>
-                                <li>Digitale Produkte & agile Projektsteuerung</li>
-                                <li>Vertriebsstrategie & Marktentwicklung</li>
-                                <li>KPI-Entwicklung & Entscheidungsgrundlagen</li>
-                                <li>Kooperative Teamführung</li>
-                            </ul>
+                    <div>
+                        <div class="about-text">
+                            <p>
+                                Als erfahrene Projekt- und Unternehmensentwicklerin mit unternehmerischem Hintergrund 
+                                bringe ich umfassende Expertise im Auf- und Ausbau wirkungsvoller Strukturen mit.
+                            </p>
+                            <p>
+                                Durch Managementfunktionen in Marketing, Vertrieb und Operations habe ich tiefgreifende 
+                                Erfahrungen in verschiedenen Branchen gesammelt – vom Public Sector über Retail bis hin 
+                                zu Manufacturing und additiver Fertigung.
+                            </p>
+                            <p>
+                                Mein Ansatz verbindet analytisches Denken mit lösungsorientiertem Handeln. Ich entwickle 
+                                Strategien, die funktionieren, und setze sie mit strukturierter Teamführung um.
+                            </p>
                         </div>
-                        <div class="expertise-card">
-                            <h3>Stärken</h3>
-                            <ul>
-                                <li>Analytische Fähigkeiten</li>
-                                <li>Lösungsorientiert</li>
-                                <li>Teamfähig & verhandlungsstark</li>
-                                <li>Strukturiert & zielorientiert</li>
-                            </ul>
+                        <div class="expertise-grid">
+                            <div class="expertise-card">
+                                <h3>Kernkompetenzen</h3>
+                                <ul>
+                                    <li>Prozessaufbau & Organisationsentwicklung</li>
+                                    <li>Digitale Produkte & agile Projektsteuerung</li>
+                                    <li>Vertriebsstrategie & Marktentwicklung</li>
+                                    <li>KPI-Entwicklung & Entscheidungsgrundlagen</li>
+                                    <li>Kooperative Teamführung</li>
+                                </ul>
+                            </div>
+                            <div class="expertise-card">
+                                <h3>Stärken</h3>
+                                <ul>
+                                    <li>Analytische Fähigkeiten</li>
+                                    <li>Lösungsorientiert</li>
+                                    <li>Teamfähig & verhandlungsstark</li>
+                                    <li>Strukturiert & zielorientiert</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -832,7 +886,7 @@
                 <h2 class="section-title">Beruflicher Werdegang</h2>
                 <div class="experience-timeline">
                     <div class="timeline-item">
-                        <div class="timeline-period">2019 - 2025</div>
+                        <div class="timeline-period">2020 - 2025</div>
                         <div class="timeline-company">Digitalagentur</div>
                         <div class="timeline-role">Umsatzverantwortung, Business Development & Prozessmanagement</div>
                         <div class="timeline-description">
@@ -843,30 +897,29 @@
                             <li>Product Owner für digitale Transformationsprojekte</li>
                             <li>Aufbau von Prozessen und Organisationsstrukturen</li>
                             <li>Entwicklung agiler Projektsteuerungsmethoden</li>
-                             <li>Elternzeit von Juni 2023 bis Januar 2025</li>
                         </ul>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-period">2018 - 2019</div>
+                        <div class="timeline-period">2017 - 2020</div>
                         <div class="timeline-company">Industrie Start-up (Additive Fertigung)</div>
                         <div class="timeline-role">Vertrieb & Marketing, Leadership</div>
                         <ul class="timeline-achievements">
                             <li>Etablierung eines Multi-Stakeholder-Vertriebsansatzes</li>
                             <li>Aufbau eines daten- und faktenbasierten Entscheidungsprozesses</li>
                             <li>Mitwirkung bei der Entwicklung einer klaren Zukunftsvision</li>
-                            <li>Ergebnis: Verkauf der Firma</li>
+                            <li>Erfolgreicher Exit: Verkauf der Firma</li>
                         </ul>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-period">2011 - 2017</div>
+                        <div class="timeline-period">2014 - 2017</div>
                         <div class="timeline-company">SaaS Start-up (Retail)</div>
                         <div class="timeline-role">Umsatzverantwortung EMEA-Region, Business Development</div>
                         <ul class="timeline-achievements">
                             <li>Evaluierung des südamerikanischen Marktes mit Sitz in São Paulo</li>
-                            <li>Anbahnen und Abschließen von mehreren Key Accounts</li>
-                            <li>Aufbau und Führung eines internationalen Teams in London, Berlin und Passau</li>
+                            <li>Erkennung und Nutzung von Marktentwicklungen</li>
+                            <li>Aufbau und Führung eines internationalen Teams (8 Mitarbeiter über 3 Büros)</li>
                             <li>Entwicklung regionaler Vertriebsstrategien</li>
                         </ul>
                     </div>
@@ -882,11 +935,11 @@
                         <div class="timeline-period">Universität Passau</div>
                         <div class="timeline-company">Diplom Kulturwirtin</div>
                         <div class="timeline-description">
-                            Diplom, BWL & VWL, Internationale und Interkulturelle Studien, 1.6
+                            Schwerpunkte: Kulturmanagement, Betriebswirtschaft und Internationales
                         </div>
                         <ul class="timeline-achievements">
                             <li>Auslandsjahr in Barcelona und Zaragoza, Spanien</li>
-                            
+                            <li>Interdisziplinäres Studium an der Schnittstelle von Kultur und Wirtschaft</li>
                         </ul>
                     </div>
                 </div>
@@ -915,10 +968,8 @@
                             <span class="skill-tag">Google Suite</span>
                             <span class="skill-tag">Microsoft Suite</span>
                             <span class="skill-tag">Figma</span>
-                             <span class="skill-tag">Salesforce</span>
                             <span class="skill-tag">Toggle</span>
                             <span class="skill-tag">Slack</span>
-                            <span class="skill-tag">Low Code/No Code platforms</span>
                             <span class="skill-tag">Civento</span>
                             <span class="skill-tag">Datev</span>
                         </div>
@@ -1079,17 +1130,17 @@
         const widgetText = widget.querySelector('.widget-text');
         
         const funFacts = [
-            { emoji: '🎯', text: 'Fun Fact: Ich mag Koriander!' },
-            { emoji: '✈️', text: 'Ich wollte immer im Ausland leben' },
-            { emoji: '🚀', text: '0% Esoterik, 100% Wissen, Timing und Neugier' },
+            { emoji: '🎯', text: 'Fun Fact: Ich spreche 4 Sprachen!' },
+            { emoji: '✈️', text: 'Ich habe in 3 Ländern gelebt' },
+            { emoji: '🚀', text: 'Zwei erfolgreiche Start-up Exits!' },
             { emoji: '🎨', text: 'Kulturwirtin meets Tech' },
             { emoji: '📊', text: 'Data-driven? Immer!' },
-            { emoji: '🌍', text: 'Von Passau über Barcelona nach São Paulo und zurück' },
-            { emoji: '💡', text: 'Ideen + Struktur + Machen = erfolgreiche Projekte' },
-            { emoji: '🎪', text: 'Prozesse sind Dein Freunde' },
-            { emoji: '🦄', text: 'Ich glaube an Menschen' },
+            { emoji: '🌍', text: 'Von Passau über Barcelona nach São Paulo' },
+            { emoji: '💡', text: 'Ideen + Struktur = Magie' },
+            { emoji: '🎪', text: 'Prozesse sind wie Choreographien' },
+            { emoji: '🦄', text: 'Ich glaube an machbare Visionen' },
             { emoji: '🎭', text: 'Multi-Stakeholder-Projekte? Her damit!' },
-            { emoji: '🔮', text: 'Die Zukunft ist 42' },
+            { emoji: '🔮', text: 'Die Zukunft ist agil' },
             { emoji: '🎪', text: 'Von Public Sector bis 3D Printing' },
             { emoji: '🧩', text: 'Komplexität ist mein Spielplatz' },
             { emoji: '☕', text: 'Powered by Kaffee und Klarheit' },
