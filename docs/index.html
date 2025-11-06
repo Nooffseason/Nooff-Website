@@ -918,17 +918,225 @@
                 <div style="margin-top: 3rem;">
                     <h3 style="color: var(--primary); margin-bottom: 1.5rem; font-size: 1.1rem;">Sprachen</h3>
                     <div class="languages">
-                        <div class="language-item">
-                            <div class="language-name">Deutsch</div>
+                       
+                         <div class="language-item">
+                              <div class="language-name">Deutsch</div>
                             <div class="language-level">Muttersprache</div>
+                        </div>
+                         <div class="language-item">
+                            <div class="language-name">Englisch</div>
+                            <div class="language-level">Fließend (C2)</div>
                         </div>
                         <div class="language-item">
                             <div class="language-name">Spanisch</div>
                             <div class="language-level">Fließend (C2)</div>
                         </div>
                         <div class="language-item">
-                            <div class="language-name">Englisch</div>
-                            <div class="language-level">Fließend (C2)</div>
+                            <div class="language-name">Portugiesisch</div>
+                            <div class="language-level">Fortgeschritten (B2)</div>
                         </div>
-                        <div class="language-item">
-                            <div class="language-name">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section">
+            <div class="container">
+                <h2 class="section-title">Blog & Einblicke</h2>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <div class="blog-image">💡</div>
+                        <div class="blog-content">
+                            <div class="blog-date">Kommende Beiträge</div>
+                            <h3>Prozessmanagement in digitalen Transformationsprojekten</h3>
+                            <p>Wie man strukturierte Prozesse aufbaut, die Teams stärken und Projekterfolge ermöglichen.</p>
+                            <a href="#" class="read-more">Weiterlesen →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-image">🎯</div>
+                        <div class="blog-content">
+                            <div class="blog-date">Demnächst verfügbar</div>
+                            <h3>Von der Vision zum Exit</h3>
+                            <p>Erfahrungen aus dem erfolgreichen Aufbau und Verkauf eines Industrie Start-ups.</p>
+                            <a href="#" class="read-more">Weiterlesen →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-image">🌍</div>
+                        <div class="blog-content">
+                            <div class="blog-date">In Vorbereitung</div>
+                            <h3>Internationale Teams erfolgreich führen</h3>
+                            <p>Lessons Learned aus der Führung von Teams über drei Kontinente hinweg.</p>
+                            <a href="#" class="read-more">Weiterlesen →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h2 class="section-title">Kontakt</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h3>E-Mail</h3>
+                                <p><a href="mailto:kristina@juse.at">kristina@juse.at</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-details">
+                                <h3>Telefon</h3>
+                                <p><a href="tel:+4915170088369">+49 151 70088369</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h3>Standort</h3>
+                                <p>Schardenberg, Oberösterreich</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-cta">
+                        <h3>Lassen Sie uns sprechen</h3>
+                        <p>Interessiert an einer Zusammenarbeit oder haben Sie Fragen? Ich freue mich auf den Austausch.</p>
+                        <a href="mailto:kristina@juse.at" class="btn btn-primary">Nachricht senden</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Kristina Juse. Projekt- & Unternehmensentwicklung.</p>
+    </footer>
+
+    <div id="quirky-widget" class="quirky-widget">
+        <div class="widget-content">
+            <span class="widget-emoji">🎲</span>
+            <span class="widget-text">Klick mich!</span>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Quirky Widget
+        const widget = document.getElementById('quirky-widget');
+        const widgetEmoji = widget.querySelector('.widget-emoji');
+        const widgetText = widget.querySelector('.widget-text');
+        
+        const funFacts = [
+            { emoji: '🎯', text: 'Fun Fact: Ich spreche 4 Sprachen!' },
+            { emoji: '✈️', text: 'Ich habe in 3 Ländern gelebt' },
+            { emoji: '🚀', text: 'Zwei erfolgreiche Start-up Exits!' },
+            { emoji: '🎨', text: 'Kulturwirtin meets Tech' },
+            { emoji: '📊', text: 'Data-driven? Immer!' },
+            { emoji: '🌍', text: 'Von Passau über Barcelona nach São Paulo' },
+            { emoji: '💡', text: 'Ideen + Struktur = Magie' },
+            { emoji: '🎪', text: 'Prozesse sind wie Choreographien' },
+            { emoji: '🦄', text: 'Ich glaube an machbare Visionen' },
+            { emoji: '🎭', text: 'Multi-Stakeholder-Projekte? Her damit!' },
+            { emoji: '🔮', text: 'Die Zukunft ist agil' },
+            { emoji: '🎪', text: 'Von Public Sector bis 3D Printing' },
+            { emoji: '🧩', text: 'Komplexität ist mein Spielplatz' },
+            { emoji: '☕', text: 'Powered by Kaffee und Klarheit' },
+            { emoji: '🎸', text: 'Work hard, stay quirky' }
+        ];
+        
+        let lastFactIndex = -1;
+        let clickCount = 0;
+        
+        widget.addEventListener('click', () => {
+            clickCount++;
+            
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * funFacts.length);
+            } while (randomIndex === lastFactIndex && funFacts.length > 1);
+            
+            lastFactIndex = randomIndex;
+            const fact = funFacts[randomIndex];
+            
+            widget.classList.add('widget-celebrating');
+            
+            widgetEmoji.textContent = fact.emoji;
+            widgetText.textContent = fact.text;
+            
+            if (clickCount === 5) {
+                widgetEmoji.textContent = '🎉';
+                widgetText.textContent = 'Du bist hartnäckig - ich mag das!';
+            }
+            
+            if (clickCount === 10) {
+                widgetEmoji.textContent = '🏆';
+                widgetText.textContent = 'Achievement unlocked: Neugier-Champion!';
+            }
+            
+            if (clickCount === 15) {
+                widgetEmoji.textContent = '🤝';
+                widgetText.textContent = 'Lass uns reden! kristina@juse.at';
+            }
+            
+            setTimeout(() => {
+                widget.classList.remove('widget-celebrating');
+            }, 1500);
+            
+            const colors = [
+                ['#f59e0b', '#d97706'],
+                ['#0f766e', '#115e59'],
+                ['#dc2626', '#b91c1c'],
+                ['#7c3aed', '#6d28d9'],
+                ['#059669', '#047857'],
+                ['#ea580c', '#c2410c']
+            ];
+            
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            widget.style.background = `linear-gradient(135deg, ${randomColor[0]} 0%, ${randomColor[1]} 100%)`;
+        });
+    </script>
+</body>
